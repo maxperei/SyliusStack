@@ -27,6 +27,8 @@ final class Configuration implements ConfigurationInterface
 
         $this->addRoutingConfiguration($rootNode);
 
+        $this->addThemeConfiguration($rootNode);
+
         return $treeBuilder;
     }
 
@@ -49,6 +51,17 @@ final class Configuration implements ConfigurationInterface
                             })
                         ->end()
                     ->scalarPrototype()->end()
+                ->end()
+            ->end()
+        ;
+    }
+
+    private function addThemeConfiguration(ArrayNodeDefinition $rootNode): void
+    {
+        $rootNode
+            ->children()
+                ->scalarNode('theme')
+                    ->defaultValue('bootstrap')
                 ->end()
             ->end()
         ;

@@ -22,6 +22,13 @@ return function (ContainerConfigurator $configurator): void {
 
     $services = $configurator->services();
 
+    $services
+        ->defaults()
+        ->autowire()
+        ->autoconfigure()
+    ;
+    $services->load('Sylius\\AdminUi\\Symfony\\', '../src/Symfony');
+
     $services->set('sylius_admin_ui.knp.menu_builder', MenuBuilder::class)
         ->args([service('knp_menu.factory')])
         ->tag(name: 'knp_menu.menu_builder', attributes: ['method' => 'createMenu', 'alias' => 'sylius_admin_ui.menu.sidebar'])

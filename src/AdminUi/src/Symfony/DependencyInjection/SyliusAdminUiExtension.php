@@ -33,5 +33,6 @@ final class SyliusAdminUiExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $container->setParameter('sylius_admin_ui.routing', $config['routing']);
+        $container->setParameter('sylius_admin_ui.theme', $config['theme']);
     }
 }
