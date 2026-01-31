@@ -1,5 +1,16 @@
 <?php
 
+/*
+ * This file is part of the Sylius package.
+ *
+ * (c) Sylius Sp. z o.o.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+declare(strict_types=1);
+
 namespace Sylius\BootstrapAdminUi\Symfony\Theme;
 
 use Sylius\AdminUi\Symfony\Theme\Attribute\AsTheme;
@@ -15,9 +26,10 @@ class BootstrapThemeProvider implements ThemeProviderInterface
     {
         $loader = new PhpFileLoader(
             $container,
-            new FileLocator(\dirname(__DIR__, 3) . '/config')
+            new FileLocator(\dirname(__DIR__, 3) . '/config'),
         );
 
         $loader->load('app.php');
+        $loader->load('services.php');
     }
 }

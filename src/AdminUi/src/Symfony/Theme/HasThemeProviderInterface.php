@@ -11,8 +11,9 @@
 
 declare(strict_types=1);
 
-namespace Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace Sylius\AdminUi\Symfony\Theme;
 
-return static function (ContainerConfigurator $container): void {
-    $container->import('./services/**/**.php');
-};
+interface HasThemeProviderInterface
+{
+    public function getThemeProvider(): ThemeProviderInterface;
+}
