@@ -41,11 +41,14 @@ final class SyliusAdminUiExtension extends Extension implements PrependExtension
 
     public function prepend(ContainerBuilder $container): void
     {
+        if (!$container->hasParameter('kernel.bundles')) {
+            return;
+        }
+
+        $bundles = $container->getParameter('kernel.bundles');
         $configs = $container->getExtensionConfig($this->getAlias());
         $config = $this->processConfiguration(new Configuration(), $configs);
-
         $theme = $config['theme'];
-        $bundles = $container->getParameter('kernel.bundles');
 
         foreach ($bundles as $bundleClass) {
             if (!is_a($bundleClass, HasThemeProviderInterface::class, true)) {

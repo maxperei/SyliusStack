@@ -62,6 +62,8 @@ final class Configuration implements ConfigurationInterface
             ->children()
                 ->scalarNode('theme')
                     ->defaultValue('bootstrap')
+                        ->cannotBeEmpty()
+                    ->end()
                 ->end()
             ->end()
         ;

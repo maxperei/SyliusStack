@@ -18,7 +18,7 @@ class AsTheme
 {
     public function __construct(
         public readonly string $name,
-        public readonly string $priority,
+        public readonly ?int $priority = null,
     ) {
     }
 }
