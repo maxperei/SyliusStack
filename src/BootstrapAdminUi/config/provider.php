@@ -13,6 +13,9 @@ declare(strict_types=1);
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
-return static function (ContainerConfigurator $container): void {
-    $container->import('./services/**/**.php');
+use Sylius\BootstrapAdminUi\Symfony\Theme\BootstrapThemeProvider;
+
+return function (ContainerConfigurator $configurator): void {
+    $services = $configurator->services();
+    $services->set(BootstrapThemeProvider::class)->autoconfigure();
 };

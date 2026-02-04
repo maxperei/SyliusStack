@@ -11,8 +11,14 @@
 
 declare(strict_types=1);
 
-namespace Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace Sylius\AdminUi\Symfony\Theme\Attribute;
 
-return static function (ContainerConfigurator $container): void {
-    $container->import('./services/**/**.php');
-};
+#[\Attribute(\Attribute::TARGET_CLASS)]
+class AsTheme
+{
+    public function __construct(
+        public readonly string $name,
+        public readonly ?int $priority = null,
+    ) {
+    }
+}
